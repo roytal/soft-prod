@@ -61,8 +61,8 @@ int main()
   scanf("%d", &n);
 
   int* number = malloc(n * sizeof(int));
-  //for prmotation checking
-  int* copy = malloc(n*sizeof*int));
+  //for permotation checking
+  int* copy = malloc(n*sizeof(int));
   
 
   printf("Enter the numbers \n");
