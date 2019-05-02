@@ -67,7 +67,7 @@ int main()
 
   printf("Enter the numbers \n");
   //let klee find the "bad input"
-  klee_make_symbolic(number, n, "number");
+  klee_make_symbolic(number, n*sizeof(int), "number");
   //for (i = 0; i < n; ++i)
     //scanf("%d", &number[i]);
   // save the original imput array
