@@ -59,6 +59,7 @@ int main()
   int i, j, a, n; //, number[30];
   printf("Enter the value of N \n");
   scanf("%d", &n);
+  printf("%d\n", n);
 
   int* number = malloc(n * sizeof(int));
   //for permotation checking- contain the original array
@@ -98,7 +99,7 @@ int main()
   
   //checking if the array is not sorted
   //force klee to find if there is an input that canot be sorted by our procedure
-  if (!isSorted(number,n))
+ /* if (!isSorted(number,n))
   {
 	  printf("the array is not sorted\n");
 	  //klee_assert(0);
