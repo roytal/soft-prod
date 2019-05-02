@@ -61,18 +61,18 @@ int main()
   scanf("%d", &n);
 
   int* number = malloc(n * sizeof(int));
-  //for permotation checking
-  int* copy = malloc(n*sizeof(int));
+  //for permotation checking- contain the original array
+  int* orig_number = malloc(n*sizeof(int));
   
 
-  printf("Enter the numbers \n");
+  //printf("Enter the numbers \n");
   //let klee find the "bad input"
   klee_make_symbolic(number, n*sizeof(int), "number");
   //for (i = 0; i < n; ++i)
     //scanf("%d", &number[i]);
   // save the original imput array
   for (i = 0; i< n; i++){
-	  copy[i] = number[i];
+	  orig_number[i] = number[i];
   }
 	  
   for (i = 0; i < n; ++i)
@@ -104,7 +104,7 @@ int main()
 	  klee_assert(0);
   }
   // assert that the array at the end is a permutation of the original array
-  if (!isPermotation(number, copy, n))
+  if (!isPermotation(orig_number, number, n))
   {
 	  printf("some numbers are missing\n");
 	  klee_assert(0);
