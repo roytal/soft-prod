@@ -1,7 +1,7 @@
 #include<string.h>
 #include<stdio.h>
 #include<stdlib.h>
-#include <klee/klee.h>
+
 
 int isSorted( int * arr, int len)
 {	
@@ -33,7 +33,7 @@ int isInside(int *arr, int x, int len)
 int isPermotation(int * original, int * copy , int len)
 {
 		int i, copy_len;
-		copy_len = sizeof(copy/sizeof(int));
+		copy_len = sizeof(copy)/sizeof(int);
 		if (copy_len != len )
 		{
 			return 0;
