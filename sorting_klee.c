@@ -1,11 +1,12 @@
 #include<string.h>
 #include<stdio.h>
 #include<stdlib.h>
+#include<klee/klee.h>
 
 
 int isSorted( int * arr, int len)
 {	
-	for(int i = 0; i++; i< len-1)
+	for(int i = 0; i<len-1; i++)
 	{
 		if (arr[i+1] <arr[i])
 		{
@@ -18,7 +19,7 @@ int isSorted( int * arr, int len)
 
 int isInside(int *arr, int x, int len)
 {
-	for (int i = ; i++; i < len)
+	for (int i = 0 ; i<len ;i++)
 	{
 		if (arr[i] == x)
 		{
@@ -52,7 +53,7 @@ int isPermotation(int * original, int * copy , int len)
 	
 	
 
-void main()
+int main()
 {
 
   int i, j, a, n; //, number[30];
@@ -100,10 +101,10 @@ void main()
   if (!isSorted(number,n))
   {
 	  printf("the array is not sorted\n");
-	  klee_assert(0)
+	  klee_assert(0);
   }
   // assert that the array at the end is a permutation of the original array
-  if (!isPermotation(original, copy, n))
+  if (!isPermotation(number, copy, n))
   {
 	  printf("some numbers are missing\n");
 	  klee_assert(0);
