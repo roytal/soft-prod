@@ -4,7 +4,7 @@
 #include<klee/klee.h>
 
 
-int isSorted( int * arr, int len)
+void isSorted( int * arr, int len)
 {	
 	for(int i = 0; i<len-1; i++)
 	{
@@ -31,7 +31,7 @@ int isInside(int *arr, int x, int len)
 
 
 
-int isPermotation(int * original, int * copy , int len)
+void isPermotation(int * original, int * copy , int len)
 {
 	int i, copy_len;
 	copy_len = sizeof(copy)/sizeof(int);
@@ -49,7 +49,7 @@ int isPermotation(int * original, int * copy , int len)
 			klee_assert(0);
 		}
 	}
-	return 1;
+	printf("Permutation is OK!"); 
 }
 			
 	
@@ -127,4 +127,6 @@ int main()
 	{
 		printf("%d\n", number[i]);
 	}
+	
+	return 0;
 }
