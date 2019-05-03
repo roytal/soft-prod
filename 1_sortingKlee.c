@@ -64,7 +64,6 @@ int main()
 	// using klee to set the value of n or take from user - lenght of array 
 // 	scanf("%d", &n);
 	klee_make_symbolic(&n,sizeof(n),"n");
-	printf("%d\n", n);
 	
 	// malloc both array - orig and copy 
 	int* number = malloc(n * sizeof(int));	
