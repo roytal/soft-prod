@@ -28,9 +28,9 @@ int isInside(int *arr, int x, int len)
 void isPermotation(int * original, int * copy , int len)
 {
 	int i, copy_len;
-	copy_len = sizeof(copy)/sizeof(int);
+// 	copy_len = sizeof(copy)/sizeof(int);
 	
-	assert(copy_len == len );
+// 	assert(copy_len == len );
 	printf("the old and new arrays are from the same lenght"); 
 	
 	for (i =0; i<len; i++)
