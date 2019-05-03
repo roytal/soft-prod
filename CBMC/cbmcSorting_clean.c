@@ -52,12 +52,14 @@ int main()
 	printf("Enter the value of N \n");
 	scanf("%d", &n);
     	
+	assert(n > 0);
 	// malloc both array - orig and copy 
 	int* number = malloc(n * sizeof(int));	
 	int* orig_number = malloc(n*sizeof(int));
 	
 	printf("Enter the numbers \n");
 	for (i = 0; i < n; ++i)
+		
     {
         scanf("%d", &number[i]);
     }
