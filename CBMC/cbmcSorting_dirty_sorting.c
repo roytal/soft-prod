@@ -72,7 +72,7 @@ int main()
 	}
 
 	// bubble sort algo
-	for (i = 0; i < n; ++i)
+	for (i = 0; i < n-3; ++i)
 	{
 		for (j = i + 1; j < n; ++j)
 		{
