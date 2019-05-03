@@ -1,7 +1,7 @@
 #include<string.h>
 #include<stdio.h>
 #include<stdlib.h>
-//#include<klee/klee.h>
+#include<klee/klee.h>
 
 
 void isSorted( int * arr, int len)
@@ -11,7 +11,7 @@ void isSorted( int * arr, int len)
 		if (arr[i+1] <arr[i])
 		{
 			printf("There is a problem with sorting!"); 
-			//klee_assert(0);
+			klee_assert(0);
 		}
 	}
 	printf("Sorting is OK!"); 
@@ -38,7 +38,7 @@ void isPermotation(int * original, int * copy , int len)
 	if (copy_len != len )
 	{
 		printf("There is a problem with permutation - new array has differeny lenght"); 
-		//klee_assert(0);
+		klee_assert(0);
 	}
 	
 	for (i =0; i<len; i++)
@@ -46,7 +46,7 @@ void isPermotation(int * original, int * copy , int len)
 		if (!isInside(copy, original[i], len))
 		{
 			printf("There is a problem with permutation - new array has differeny values"); 
-			//klee_assert(0);
+			klee_assert(0);
 		}
 	}
 	printf("Permutation is OK!"); 
@@ -59,22 +59,25 @@ void isPermotation(int * original, int * copy , int len)
 int main()
 {
 	int i, j, a, n; //, number[30];
-	printf("Enter the value of N \n");
-	scanf("%d", &n);
-	printf("%d\n", n);
-
-	int* number = malloc(n * sizeof(int));
-	//for permotation checking- contain the original array
-	int* orig_number = malloc(n*sizeof(int));
-
-	printf("Enter the numbers \n");
-	for (i = 0; i < n; ++i)
-	{
-		scanf("%d", &number[i]);
-	}
 	
-	//let klee find the "bad input"
-	//klee_make_symbolic(number, n*sizeof(int), "number");
+	printf("Enter the value of N \n");
+	// using klee to set the value of n or take from user - lenght of array 
+// 	scanf("%d", &n);
+	klee_make_symbolic(&n,sizeof(n),"n");
+	printf("%d\n", n);
+	
+	// malloc both array - orig and copy 
+	int* number = malloc(n * sizeof(int));	
+	int* orig_number = malloc(n*sizeof(int));
+	
+	printf("Enter the numbers \n");
+	// take numbres from user or set with klee
+// 	for (i = 0; i < n; ++i)
+// 	{
+// 		scanf("%d", &number[i]);
+// 	}
+	klee_make_symbolic(number,n*sizeof(int),"number");
+
 	
 	// save the original input array
 	for (i = 0; i< n; i++)
@@ -127,6 +130,10 @@ int main()
 	{
 		printf("%d\n", number[i]);
 	}
+	
+	// Klee Assertions 
+	isPermotation(orig_number, number, n)
+	isSorted(number,n)		
 	
 	return 0;
 }
