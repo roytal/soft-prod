@@ -52,7 +52,8 @@ int main()
 	printf("Enter the value of N \n");
 	scanf("%d", &n);
     	
-	assert(n > 0);
+	if (n <= 0)
+		return 0;
 	// malloc both array - orig and copy 
 	int* number = malloc(n * sizeof(int));	
 	int* orig_number = malloc(n*sizeof(int));
