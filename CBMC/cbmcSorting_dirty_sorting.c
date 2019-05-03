@@ -72,11 +72,11 @@ int main()
 	}
 
 	// bubble sort algo
-	for (i = 0; i < n-3; ++i)
+	for (i = 0; i < n; ++i)
 	{
 		for (j = i + 1; j < n; ++j)
 		{
-			if (number[i] > number[j])
+			if (number[i] < number[j])
 			{
 				a =  number[i]; 
 				number[i] = number[j];
