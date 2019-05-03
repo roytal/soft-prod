@@ -2,7 +2,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-void isSorted( int * arr, int len)
+void isSorted( int* arr, int len)
 {	
 	for(int i = 0; i<len-1; i++)
 	{
