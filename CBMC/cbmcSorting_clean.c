@@ -6,7 +6,7 @@ void isSorted( int * arr, int len)
 {	
 	for(int i = 0; i<len-1; i++)
 	{
-		assert(arr[i+1] >= arr[i])
+		assert(arr[i+1] >= arr[i]);
 	}
 	printf("Sorting is OK!"); 
 }
@@ -29,13 +29,13 @@ void isPermotation(int * original, int * copy , int len)
 {
 	int i, copy_len;
 	copy_len = sizeof(copy)/sizeof(int);
-    
-    assert(copy_len == len )
+	
+	assert(copy_len == len );
 	printf("the old and new arrays are from the same lenght"); 
 	
 	for (i =0; i<len; i++)
 	{
-        assert(isInside(copy, original[i], len))
+		assert(isInside(copy, original[i], len));
 	}
     
 	printf("Permutation is OK!"); 
