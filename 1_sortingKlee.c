@@ -106,17 +106,17 @@ int main()
 	{
 	assert(number[i] < number[i+1]);
 	}
-	*/
+	
 
 	//checking if the array is not sorted
 	//force klee to find if there is an input that canot be sorted by our procedure
-	/* if (!isSorted(number,n))
+	if (!isSorted(number,n))
 	{
 	  printf("the array is not sorted\n");
 	  //klee_assert(0);
 	}
 	// assert that the array at the end is a permutation of the original array
-	/*if (!isPermotation(orig_number, number, n))
+	if (!isPermotation(orig_number, number, n))
 	{
 	  printf("some numbers are missing\n");
 	  //klee_assert(0);
@@ -132,8 +132,8 @@ int main()
 	}
 	
 	// Klee Assertions 
-	isPermotation(orig_number, number, n)
-	isSorted(number,n)		
+	isPermotation(orig_number, number, n);
+	isSorted(number,n);		
 	
 	return 0;
 }
