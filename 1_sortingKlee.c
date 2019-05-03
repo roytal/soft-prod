@@ -11,7 +11,7 @@ void isSorted( int * arr, int len)
 		if (arr[i+1] <arr[i])
 		{
 			printf("There is a problem with sorting!"); 
-			klee_assert(0);
+			//klee_assert(0);
 		}
 	}
 	printf("Sorting is OK!"); 
@@ -38,7 +38,7 @@ void isPermotation(int * original, int * copy , int len)
 	if (copy_len != len )
 	{
 		printf("There is a problem with permutation - new array has differeny lenght"); 
-		klee_assert(0);
+		//klee_assert(0);
 	}
 	
 	for (i =0; i<len; i++)
