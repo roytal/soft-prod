@@ -34,18 +34,11 @@ int isInside(int *arr, int x, int len)
 void isPermotation(int * original, int * copy , int len)
 {
 	int i, copy_len;
-	copy_len = sizeof(copy)/sizeof(int);
-	if (copy_len != len )
-	{
-		printf("There is a problem with permutation - new array has differeny lenght"); 
-		klee_assert(0);
-	}
-	
 	for (i =0; i<len; i++)
 	{
 		if (!isInside(copy, original[i], len))
 		{
-			printf("There is a problem with permutation - new array has differeny values"); 
+			printf("There is a problem with permutation"); 
 			klee_assert(0);
 		}
 	}
@@ -75,7 +68,7 @@ int main()
 // 	{
 // 		scanf("%d", &number[i]);
 // 	}
-	klee_make_symbolic(number,n*sizeof(int),"number");
+	klee_make_symbolic(number, sizeof(number), "number");
 
 	
 	// save the original input array
