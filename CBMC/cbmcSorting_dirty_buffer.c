@@ -45,8 +45,8 @@ void isBufferOverrun(int insertingIndex, int arrayLen)
 
 int main()
 {
-	int i, j, a, n, number[10];
-	int sizeOfNumber = 10;
+	int i, j, a, n, number[4];
+	int sizeOfNumber = 4;
 	printf("Enter the value of N \n");
 	scanf("%d", &n);
     
