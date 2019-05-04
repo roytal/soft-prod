@@ -1,6 +1,7 @@
 #include<string.h>
 #include<stdio.h>
 #include<stdlib.h>
+#include <assert.h>
 
 void isSorted( int* arr, int len)
 {	
