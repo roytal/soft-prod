@@ -58,9 +58,9 @@ int main()
 	// using klee to set the value of n or take from user - lenght of array 
 // 	scanf("%d", &n);
  	klee_make_symbolic(&n,sizeof(n),"n");
-	//klee_assume(n < 20);
+	klee_assume(n < 20);
 	// malloc both array - orig and copy 
-	//int* number = malloc(n * sizeof(int));	
+	int* number = malloc(n * sizeof(int));	
 	int* orig_number = malloc(n*sizeof(int));
 	
 	printf("Enter the numbers \n");
@@ -69,7 +69,7 @@ int main()
 // 	{
 // 		scanf("%d", &number[i]);
 // 	}
-	klee_make_symbolic(number, sizeof(number), "number");
+	klee_make_symbolic(number, n*sizeof(int), "number");
 
 	
 	// save the original input array
