@@ -6,7 +6,7 @@ void isSorted( int * arr, int len)
 {	
 	for(int i = 0; i<len-1; i++)
 	{
-		assert(arr[i+1] >= arr[i]);		
+		assert(arr[i+1] <= arr[i]);		
 	}
 	printf("Sorting is OK!"); 
 }
