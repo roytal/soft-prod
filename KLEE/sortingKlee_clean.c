@@ -60,7 +60,7 @@ int main()
  	klee_make_symbolic(&n,sizeof(n),"n");
 	klee_assume(n < 20);
 	// malloc both array - orig and copy 
-	int* number = malloc(n * sizeof(int));	
+	number = malloc(n * sizeof(int));	
 	int* orig_number = malloc(n*sizeof(int));
 	
 	printf("Enter the numbers \n");
