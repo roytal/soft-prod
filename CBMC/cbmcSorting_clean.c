@@ -29,11 +29,6 @@ int isInside(int *arr, int x, int len)
 void isPermotation(int * original, int * copy , int len)
 {
 	int i, copy_len;
-// 	copy_len = sizeof(copy)/sizeof(int);
-	
-// 	assert(copy_len == len );
-	printf("the old and new arrays are from the same lenght"); 
-	
 	for (i =0; i<len; i++)
 	{
 		assert(isInside(copy, original[i], len));
@@ -60,8 +55,7 @@ int main()
 	int* orig_number = malloc(n*sizeof(int));
 	
 	printf("Enter the numbers \n");
-	for (i = 0; i < n; ++i)
-		
+	for (i = 0; i < n; ++i)				
     {
         scanf("%d", &number[i]);
     }
@@ -85,29 +79,6 @@ int main()
 			}
 		}
 	}
-
-
-	/*  Assertions
-	assert that the array at the end is sorted
-	for (i = 0; i < n -1; i++)
-	{
-	    assert(number[i] < number[i+1]);
-	}
-	
-	//checking if the array is not sorted
-	//force klee to find if there is an input that canot be sorted by our procedure
-	if (!isSorted(number,n))
-	{
-	  printf("the array is not sorted\n");
-	  //klee_assert(0);
-	}
-	// assert that the array at the end is a permutation of the original array
-	if (!isPermotation(orig_number, number, n))
-	{
-	  printf("some numbers are missing\n");
-	  //klee_assert(0);
-	}
-	*/
 	
 	// printing the new sorted array 
 	printf("The numbers arranged in ascending order are given below \n");
