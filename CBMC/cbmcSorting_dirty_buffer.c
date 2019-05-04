@@ -9,7 +9,7 @@ void isSorted( int * arr, int len)
 	{
 		assert(arr[i+1] >= arr[i]);		
 	}
-	printf("Sorting is OK!"); 
+	printf("Sorting is OK! \n"); 
 }
 
 int isInside(int *arr, int x, int len)
@@ -34,12 +34,13 @@ void isPermotation(int * original, int * copy , int len)
 		assert(isInside(copy, original[i], len));
 	}
     
-	printf("Permutation is OK!"); 
+	printf("Permutation is OK!\n"); 
 }
 			
 void isBufferOverrun(int insertingIndex, int arrayLen)
 {
 	assert(insertingIndex < arrayLen);
+	printf("Buffer handling is OK! \n"); 
 }
 	
 
