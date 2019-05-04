@@ -51,15 +51,16 @@ void isPermotation(int * original, int * copy , int len)
 
 int main()
 {
-	int i, j, a, n; //, number[30];
+	int i, j, a, number[30];
+	int n = 30;
 	
-	printf("Enter the value of N \n");
+// 	printf("Enter the value of N \n");
 	// using klee to set the value of n or take from user - lenght of array 
 // 	scanf("%d", &n);
-	klee_make_symbolic(&n,sizeof(n),"n");
+// 	klee_make_symbolic(&n,sizeof(n),"n");
 	
 	// malloc both array - orig and copy 
-	int* number = malloc(n * sizeof(int));	
+	//int* number = malloc(n * sizeof(int));	
 	int* orig_number = malloc(n*sizeof(int));
 	
 	printf("Enter the numbers \n");
