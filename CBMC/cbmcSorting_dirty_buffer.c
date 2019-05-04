@@ -40,7 +40,6 @@ void isPermotation(int * original, int * copy , int len)
 void isBufferOverrun(int insertingIndex, int arrayLen)
 {
 	assert(insertingIndex < arrayLen);
-	printf("Buffer handling is OK! \n"); 
 }
 	
 
@@ -69,6 +68,7 @@ int main()
 		isBufferOverrun(i, sizeOfNumber);
 		orig_number[i] = number[i];
 	}
+	
 
 	// bubble sort algo
 	for (i = 0; i < n; ++i)
