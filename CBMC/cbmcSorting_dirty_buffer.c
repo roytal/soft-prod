@@ -39,7 +39,7 @@ void isPermotation(int * original, int * copy , int len)
 			
 void isBufferOverrun(int insertingIndex, int arrayLen)
 {
-	assert( insertingIndex < arrayLen )
+	assert(insertingIndex < arrayLen);
 }
 	
 
