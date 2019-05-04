@@ -3,13 +3,11 @@
 #include<stdlib.h>
 #include <assert.h>
 
-void isSorted( int* arr, int len)
+void isSorted( int * arr, int len)
 {	
 	for(int i = 0; i<len-1; i++)
-	{		
-		printf("The i integer is %d\n", arr[i]);
-		printf("The i+1 integer is %d\n", arr[i+1]);
-		assert(arr[i+1] >= arr[i]);
+	{
+		assert(arr[i+1] >= arr[i]);		
 	}
 	printf("Sorting is OK!"); 
 }
@@ -77,9 +75,10 @@ int main()
 	// bubble sort algo
 	for (i = 0; i < n; ++i)
 	{
-		for (j = i + 1; j < n; ++j)
+		// SORTING BUG!!!!!!!!!!!!!!!
+		for (j = i + 1; j < n-1; ++j)
 		{
-			if (number[i] < number[j])
+			if (number[i] > number[j])
 			{
 				a =  number[i]; 
 				number[i] = number[j];
