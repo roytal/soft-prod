@@ -66,7 +66,7 @@ int main()
 	
 	klee_make_symbolic(number,n*sizeof(int),"number");
 
-	
+	printf("start sort + bug\n");
 	// save the original input array
 	for (i = 0; i< n; i++)
 	{
