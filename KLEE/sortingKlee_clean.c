@@ -130,7 +130,8 @@ int main()
 	
 	// Klee Assertions 
 	isPermotation(orig_number, number, n);
-	isSorted(number,n);		
+	isSorted(number,n);
+	printf("END OF RUNNING\n");
 	
 	return 0;
 }
