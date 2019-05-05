@@ -62,7 +62,7 @@ int main()
 		
 	int number[3];	
 	int* orig_number = malloc(n*sizeof(int));
-	}
+	
 	klee_make_symbolic(number,n*sizeof(int),"number");
 
 	
