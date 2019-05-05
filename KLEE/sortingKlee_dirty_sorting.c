@@ -38,7 +38,7 @@ void isPermotation(int * original, int * copy , int len)
 	if (copy_len != len )
 	{
 		printf("There is a problem with permutation - new array has differeny lenght\n"); 
-		//klee_assert(0);
+		klee_assert(0);
 	}
 	
 	for (i =0; i<len; i++)
@@ -46,7 +46,7 @@ void isPermotation(int * original, int * copy , int len)
 		if (!isInside(copy, original[i], len))
 		{
 			printf("There is a problem with permutation - new array has differeny values\n"); 
-			//klee_assert(0);
+			klee_assert(0);
 		}
 	}
 	printf("Permutation is OK!"); 
@@ -72,7 +72,7 @@ int main()
 		orig_number[i] = number[i];
 	}
 
-	// bubble sort algo
+	// bubble sort algo with bug
 	for (i = 0; i < n-2; ++i)
 	{
 		for (j = i + 1; j < n; ++j)
