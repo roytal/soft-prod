@@ -52,7 +52,7 @@ void isPermotation(int * original, int * copy , int len)
 int main()
 {
 	int i, j, a;
-	int n = 8;
+	int n = 3;
 	int number[n];
 	
 // 	printf("Enter the value of N \n");
@@ -67,7 +67,7 @@ int main()
 	//number = malloc(n * sizeof(int));	
 	int* orig_number = malloc(n*sizeof(int));
 	
-	printf("Enter the numbers \n");
+	//printf("Enter the numbers \n");
 	// take numbres from user or set with klee
 // 	for (i = 0; i < n; ++i)
 // 	{
