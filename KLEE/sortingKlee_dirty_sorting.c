@@ -35,7 +35,6 @@ void isPermotation(int * original, int * copy , int len)
 {
 	int i, copy_len;
 	copy_len = sizeof(copy)/sizeof(int);
-	printf("%d\n", copy_len);
 	if (copy_len != len )
 	{
 		printf("There is a problem with permutation - new array has differeny lenght\n"); 
@@ -90,7 +89,7 @@ int main()
 
 	
 	// Klee Assertions 
-	isPermotation(orig_number, number, n);
+	isPermotation(orig_number, number, sizeof(orig_number)/sizeof(int));
 	isSorted(number,n);		
 	
 	return 0;
