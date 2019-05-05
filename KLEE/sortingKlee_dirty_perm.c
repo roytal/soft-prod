@@ -58,28 +58,21 @@ void isPermotation(int * original, int * copy , int len)
 
 int main()
 {
-	int i, j, a, n; //, number[30];
+	int i, j, a, n= 3; 
 	
-	printf("Enter the value of N \n");
+	
 	// using klee to set the value of n or take from user - lenght of array 
 // 	scanf("%d", &n);
-	klee_make_symbolic(&n,sizeof(n),"n");
 	
 	// malloc both array - orig and copy 
-	int* number = malloc(n * sizeof(int));	
+	int number[3];	
 	int* orig_number = malloc(n*sizeof(int));
 	
-	printf("Enter the numbers \n");
-	// take numbres from user or set with klee
-// 	for (i = 0; i < n; ++i)
-// 	{
-// 		scanf("%d", &number[i]);
-// 	}
 	klee_make_symbolic(number,n*sizeof(int),"number");
 
 	
 	// save the original input array
-	for (i = 0; i< n-1; i++)
+	for (i = 0; i< n; i++)
 	{
 		orig_number[i] = number[i];
 	}
@@ -87,7 +80,7 @@ int main()
 	// bubble sort algo
 	for (i = 0; i < n; ++i)
 	{
-		for (j = i + 1; j < n; ++j)
+/*		for (j = i + 1; j < n; ++j)
 		{
 			if (number[i] > number[j])
 			{
@@ -95,40 +88,13 @@ int main()
 				number[i] = number[j];
 				number[j] = a;
 			}
-		}
+*/		}
+	number[i] = 3;
 	}
 
 
-	/*  Assertions
-	assert that the array at the end is sorted
-	for (i = 0; i < n -1; i++)
-	{
-	assert(number[i] < number[i+1]);
-	}
 	
 
-	//checking if the array is not sorted
-	//force klee to find if there is an input that canot be sorted by our procedure
-	if (!isSorted(number,n))
-	{
-	  printf("the array is not sorted\n");
-	  //klee_assert(0);
-	}
-	// assert that the array at the end is a permutation of the original array
-	if (!isPermotation(orig_number, number, n))
-	{
-	  printf("some numbers are missing\n");
-	  //klee_assert(0);
-
-	}
-	*/
-	
-	// printing the new sorted array 
-	printf("The numbers arranged in ascending order are given below \n");
-	for (i = 0; i < n; ++i)
-	{
-		printf("%d\n", number[i]);
-	}
 	
 	// Klee Assertions 
 	isPermotation(orig_number, number, n);
