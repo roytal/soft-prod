@@ -67,7 +67,7 @@ int main()
 
 	
 	// save the original input array
-	for (i = 0; i< n-1; i++)
+	for (i = 0; i< n; i++)
 	{
 		orig_number[i] = number[i];
 	}
