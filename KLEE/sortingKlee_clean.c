@@ -122,12 +122,12 @@ int main()
 	*/
 	
 	// printing the new sorted array 
-	printf("The numbers arranged in ascending order are given below \n");
+	/*printf("The numbers arranged in ascending order are given below \n");
 	for (i = 0; i < n; ++i)
 	{
 		printf("here is %0x\n", number[i]);
 	}
-	
+	*/
 	// Klee Assertions 
 	isPermotation(orig_number, number, n);
 	isSorted(number,n);
