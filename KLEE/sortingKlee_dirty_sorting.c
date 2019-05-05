@@ -58,28 +58,16 @@ void isPermotation(int * original, int * copy , int len)
 
 int main()
 {
-	int i, j, a, n; //, number[30];
-	
-	printf("Enter the value of N \n");
-	// using klee to set the value of n or take from user - lenght of array 
-// 	scanf("%d", &n);
-	klee_make_symbolic(&n,sizeof(n),"n");
-	
-	// malloc both array - orig and copy 
-	int* number = malloc(n * sizeof(int));	
+	int i, j, a, n = 3; 
+		
+	int number[3];	
 	int* orig_number = malloc(n*sizeof(int));
-	
-	printf("Enter the numbers \n");
-	// take numbres from user or set with klee
-// 	for (i = 0; i < n; ++i)
-// 	{
-// 		scanf("%d", &number[i]);
-// 	}
+	}
 	klee_make_symbolic(number,n*sizeof(int),"number");
 
 	
 	// save the original input array
-	for (i = 0; i< n; i++)
+	for (i = 0; i< n-1; i++)
 	{
 		orig_number[i] = number[i];
 	}
@@ -123,12 +111,7 @@ int main()
 	}
 	*/
 	
-	// printing the new sorted array 
-	printf("The numbers arranged in ascending order are given below \n");
-	for (i = 0; i < n; ++i)
-	{
-		printf("%d\n", number[i]);
-	}
+
 	
 	// Klee Assertions 
 	isPermotation(orig_number, number, n);
