@@ -95,7 +95,7 @@ int main()
 	
 	
 	// Klee Assertions 
-	isPermotation(orig_number, number, n);
+	isPermotation(orig_number, number, sizeof(orig_number)/sizeof(int));
 	isSorted(number,n);
 	printf("END OF RUNNING\n");
 	
