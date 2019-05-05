@@ -61,7 +61,7 @@ int main()
 	klee_make_symbolic(&n,sizeof(n),"n");
 	klee_make_symbolic(number, n*sizeof(int), "number");
 	//assume n ia a little number for avoiding malloc errors
-	klee_assume(n < 20);
+	klee_assume(1<n  && n< 20);
 	// malloc both array - orig and copy 
 	number = malloc(n * sizeof(int));	
 	int* orig_number = malloc(n*sizeof(int));
