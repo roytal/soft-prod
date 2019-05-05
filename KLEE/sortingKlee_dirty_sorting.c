@@ -35,9 +35,10 @@ void isPermotation(int * original, int * copy , int len)
 {
 	int i, copy_len;
 	copy_len = sizeof(copy)/sizeof(int);
+	printf("%d\n", copy_len);
 	if (copy_len != len )
 	{
-		printf("There is a problem with permutation - new array has differeny lenght"); 
+		printf("There is a problem with permutation - new array has differeny lenght\n"); 
 		klee_assert(0);
 	}
 	
@@ -45,7 +46,7 @@ void isPermotation(int * original, int * copy , int len)
 	{
 		if (!isInside(copy, original[i], len))
 		{
-			printf("There is a problem with permutation - new array has differeny values"); 
+			printf("There is a problem with permutation - new array has differeny values\n"); 
 			klee_assert(0);
 		}
 	}
@@ -86,31 +87,6 @@ int main()
 		}
 	}
 
-
-	/*  Assertions
-	assert that the array at the end is sorted
-	for (i = 0; i < n -1; i++)
-	{
-	assert(number[i] < number[i+1]);
-	}
-	
-
-	//checking if the array is not sorted
-	//force klee to find if there is an input that canot be sorted by our procedure
-	if (!isSorted(number,n))
-	{
-	  printf("the array is not sorted\n");
-	  //klee_assert(0);
-	}
-	// assert that the array at the end is a permutation of the original array
-	if (!isPermotation(orig_number, number, n))
-	{
-	  printf("some numbers are missing\n");
-	  //klee_assert(0);
-
-	}
-	*/
-	
 
 	
 	// Klee Assertions 
