@@ -34,6 +34,15 @@ int isInside(int *arr, int x, int len)
 void isPermotation(int * original, int * copy , int len)
 {
 	int i, copy_len;
+	copy_len = sizeof(copy)/sizeof(int);
+	
+	//compare the length of the two arrays
+	if (copy_len != len )
+	{
+		printf("There is a problem with permutation - new array has differeny lenght\n");
+		klee_assert(0);
+	}
+	//checing if all elemnts from the original array are in the sorted array
 	for (i =0; i<len; i++)
 	{
 		if (!isInside(copy, original[i], len))
@@ -52,25 +61,14 @@ void isPermotation(int * original, int * copy , int len)
 int main()
 {
 	int i, j, a;
+	// array length
 	int n = 3;
 	int number[n];
 	
-// 	printf("Enter the value of N \n");
-	// using klee to set the value of n or take from user - lenght of array 
-// 	scanf("%d", &n);
- 	
-	//klee_make_symbolic(&n,sizeof(n),"n");
+	// make the array to be sorted as symbolyic
 	klee_make_symbolic(number, n*sizeof(int), "number");
 	
 	int* orig_number = malloc(n*sizeof(int));
-	
-	// take numbres from user or set with klee
-// 	for (i = 0; i < n; ++i)
-// 	{
-// 		scanf("%d", &number[i]);
-// 	}
-	
-
 	
 	// save the original input array
 	for (i = 0; i< n; i++)
