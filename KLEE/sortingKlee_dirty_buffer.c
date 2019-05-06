@@ -10,11 +10,11 @@ void isSorted( int * arr, int len)
 	{
 		if (arr[i+1] <arr[i])
 		{
-			printf("There is a problem with sorting!"); 
+			//printf("There is a problem with sorting!\n"); 
 			klee_assert(0);
 		}
 	}
-	printf("Sorting is OK!"); 
+	printf("Sorting is OK!\n"); 
 }
 
 int isInside(int *arr, int x, int len)
@@ -35,21 +35,23 @@ void isPermotation(int * original, int * copy , int len)
 {
 	int i, copy_len;
 	copy_len = sizeof(copy)/sizeof(int);
+	
+	//compare the length of the two arrays
 	if (copy_len != len )
 	{
-		printf("There is a problem with permutation - new array has differeny lenght"); 
+		printf("There is a problem with permutation - new array has differeny lenght\n");
 		klee_assert(0);
 	}
-	
+	//checing if all elemnts from the original array are in the sorted array
 	for (i =0; i<len; i++)
 	{
 		if (!isInside(copy, original[i], len))
 		{
-			printf("There is a problem with permutation - new array has differeny values"); 
+			printf("There is a problem with permutation\n"); 
 			klee_assert(0);
 		}
 	}
-	printf("Permutation is OK!"); 
+	printf("Permutation is OK!\n"); 
 }
 			
 	
@@ -58,28 +60,19 @@ void isPermotation(int * original, int * copy , int len)
 
 int main()
 {
-	int i, j, a, n, number[30];
+	int i, j, a;
+	// array length
+	int n = 3;
+	int number[n];
 	
-	printf("Enter the value of N \n");
-	// using klee to set the value of n or take from user - lenght of array 
-// 	scanf("%d", &n);
-	klee_make_symbolic(&n,sizeof(n),"n");
+	// make the array to be sorted as symbolyic
+	klee_make_symbolic(number, n*sizeof(int), "number");
 	
-	// malloc both array - orig and copy 
-	//int* number = malloc(30 * sizeof(int));	
 	int* orig_number = malloc(n*sizeof(int));
 	
-	printf("Enter the numbers \n");
-	// take numbers from user or set with klee
-// 	for (i = 0; i < n; ++i)
-// 	{
-// 		scanf("%d", &number[i]);
-// 	}
-	klee_make_symbolic(number,n*sizeof(int),"number");
-
-	
 	// save the original input array
-	for (i = 0; i< n; i++)
+	//make bug for buffer overflow : itrate out of array's size
+	for (i = 0; i< n+7; i++)
 	{
 		orig_number[i] = number[i];
 	}
@@ -98,41 +91,12 @@ int main()
 		}
 	}
 
-
-	/*  Assertions
-	assert that the array at the end is sorted
-	for (i = 0; i < n -1; i++)
-	{
-	assert(number[i] < number[i+1]);
-	}
 	
-
-	//checking if the array is not sorted
-	//force klee to find if there is an input that canot be sorted by our procedure
-	if (!isSorted(number,n))
-	{
-	  printf("the array is not sorted\n");
-	  //klee_assert(0);
-	}
-	// assert that the array at the end is a permutation of the original array
-	if (!isPermotation(orig_number, number, n))
-	{
-	  printf("some numbers are missing\n");
-	  //klee_assert(0);
-
-	}
-	*/
-	
-	// printing the new sorted array 
-	printf("The numbers arranged in ascending order are given below \n");
-	for (i = 0; i < n; ++i)
-	{
-		printf("%d\n", number[i]);
-	}
 	
 	// Klee Assertions 
-	isPermotation(orig_number, number, n);
-	isSorted(number,n);		
+	isPermotation(orig_number, number, sizeof(orig_number)/sizeof(int));
+	isSorted(number,n);
+	printf("END OF RUNNING\n");
 	
 	return 0;
 }
