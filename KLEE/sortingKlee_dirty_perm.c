@@ -33,15 +33,7 @@ int isInside(int *arr, int x, int len)
 
 void isPermotation(int * original, int * copy , int len)
 {
-	int i, copy_len;
-	copy_len = sizeof(copy)/sizeof(int);
-	
-	//compare the length of the two arrays
-	if (copy_len != len )
-	{
-		printf("There is a problem with permutation - new array has differeny lenght\n");
-		klee_assert(0);
-	}
+	int i;
 	//checing if all elemnts from the original array are in the sorted array
 	for (i =0; i<len; i++)
 	{
@@ -94,7 +86,7 @@ int main()
 	
 	
 	// Klee Assertions 
-	isPermotation(orig_number, number, sizeof(orig_number)/sizeof(int));
+	isPermotation(orig_number, number,n);
 	isSorted(number,n);
 	printf("END OF RUNNING\n");
 	
