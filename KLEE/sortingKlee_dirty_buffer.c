@@ -14,7 +14,7 @@ void isSorted( int * arr, int len)
 			klee_assert(0);
 		}
 	}
-	printf("Sorting is OK!\n"); 
+	//printf("Sorting is OK!\n"); 
 }
 
 int isInside(int *arr, int x, int len)
@@ -39,7 +39,7 @@ void isPermotation(int * original, int * copy , int len)
 	{
 		if (!isInside(copy, original[i], len))
 		{
-			printf("There is a problem with permutation\n"); 
+			//printf("There is a problem with permutation\n"); 
 			klee_assert(0);
 		}
 	}
@@ -88,7 +88,7 @@ int main()
 	// Klee Assertions 
 	isPermotation(orig_number, number,n);
 	isSorted(number,n);
-	printf("END OF RUNNING\n");
+	//printf("END OF RUNNING\n");
 	
 	return 0;
 }
