@@ -10,11 +10,11 @@ void isSorted( int * arr, int len)
 	{
 		if (arr[i+1] <arr[i])
 		{
-			printf("There is a problem with sorting!"); 
+			//printf("There is a problem with sorting!\n"); 
 			klee_assert(0);
 		}
 	}
-	printf("Sorting is OK!"); 
+	printf("Sorting is OK!\n"); 
 }
 
 int isInside(int *arr, int x, int len)
@@ -35,21 +35,23 @@ void isPermotation(int * original, int * copy , int len)
 {
 	int i, copy_len;
 	copy_len = sizeof(copy)/sizeof(int);
+	
+	//compare the length of the two arrays
 	if (copy_len != len )
 	{
-		printf("There is a problem with permutation - new array has differeny lenght\n"); 
+		printf("There is a problem with permutation - new array has differeny lenght\n");
 		klee_assert(0);
 	}
-	
+	//checing if all elemnts from the original array are in the sorted array
 	for (i =0; i<len; i++)
 	{
 		if (!isInside(copy, original[i], len))
 		{
-			printf("There is a problem with permutation - new array has differeny values\n"); 
+			printf("There is a problem with permutation\n"); 
 			klee_assert(0);
 		}
 	}
-	printf("Permutation is OK!"); 
+	printf("Permutation is OK!\n"); 
 }
 			
 	
@@ -58,22 +60,25 @@ void isPermotation(int * original, int * copy , int len)
 
 int main()
 {
-	int i, j, a, n = 3; 
-		
-	int number[3];	
+	int i, j, a;
+	// array length
+	int n = 3;
+	int number[n];
+	
+	// make the array to be sorted as symbolyic
+	klee_make_symbolic(number, n*sizeof(int), "number");
+	
 	int* orig_number = malloc(n*sizeof(int));
 	
-	klee_make_symbolic(number,n*sizeof(int),"number");
-
-	printf("start sort + bug\n");
 	// save the original input array
 	for (i = 0; i< n; i++)
 	{
 		orig_number[i] = number[i];
 	}
 
-	// bubble sort algo with bug
-	for (i = 0; i < n-2; ++i)
+	// bubble sort algo
+	//make some bug for bed sorting: doesn't sort the 2 last elemnts
+	for (i = 0; i < n- 2; ++i)
 	{
 		for (j = i + 1; j < n; ++j)
 		{
@@ -86,11 +91,12 @@ int main()
 		}
 	}
 
-
+	
 	
 	// Klee Assertions 
 	isPermotation(orig_number, number, sizeof(orig_number)/sizeof(int));
-	isSorted(number,n);		
+	isSorted(number,n);
+	printf("END OF RUNNING\n");
 	
 	return 0;
 }
