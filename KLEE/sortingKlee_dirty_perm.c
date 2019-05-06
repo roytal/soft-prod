@@ -10,11 +10,11 @@ void isSorted( int * arr, int len)
 	{
 		if (arr[i+1] <arr[i])
 		{
-			printf("There is a problem with sorting!"); 
+			//printf("There is a problem with sorting!\n"); 
 			klee_assert(0);
 		}
 	}
-	printf("Sorting is OK!"); 
+	printf("Sorting is OK!\n"); 
 }
 
 int isInside(int *arr, int x, int len)
@@ -35,21 +35,23 @@ void isPermotation(int * original, int * copy , int len)
 {
 	int i, copy_len;
 	copy_len = sizeof(copy)/sizeof(int);
+	
+	//compare the length of the two arrays
 	if (copy_len != len )
 	{
-		printf("There is a problem with permutation - new array has differeny lenght"); 
+		printf("There is a problem with permutation - new array has differeny lenght\n");
 		klee_assert(0);
 	}
-	
+	//checing if all elemnts from the original array are in the sorted array
 	for (i =0; i<len; i++)
 	{
 		if (!isInside(copy, original[i], len))
 		{
-			printf("There is a problem with permutation - new array has differeny values"); 
+			printf("There is a problem with permutation\n"); 
 			klee_assert(0);
 		}
 	}
-	printf("Permutation is OK!"); 
+	printf("Permutation is OK!\n"); 
 }
 			
 	
@@ -58,18 +60,15 @@ void isPermotation(int * original, int * copy , int len)
 
 int main()
 {
-	int i, j, a, n= 3; 
+	int i, j, a;
+	// array length
+	int n = 3;
+	int number[n];
 	
+	// make the array to be sorted as symbolyic
+	klee_make_symbolic(number, n*sizeof(int), "number");
 	
-	// using klee to set the value of n or take from user - lenght of array 
-// 	scanf("%d", &n);
-	
-	// malloc both array - orig and copy 
-	int number[3];	
 	int* orig_number = malloc(n*sizeof(int));
-	
-	klee_make_symbolic(number,n*sizeof(int),"number");
-
 	
 	// save the original input array
 	for (i = 0; i< n; i++)
@@ -80,25 +79,24 @@ int main()
 	// bubble sort algo
 	for (i = 0; i < n; ++i)
 	{
-/*		for (j = i + 1; j < n; ++j)
+		for (j = i + 1; j < n; ++j)
 		{
 			if (number[i] > number[j])
 			{
-				a =  number[i]; 
+				//make some bug for bed permotation
+				//a =  number[i]; 
 				number[i] = number[j];
-				number[j] = a;
+				//number[j] = a;
 			}
-*/		}
-	number[i] = 3;
+		}
 	}
 
-
 	
-
 	
 	// Klee Assertions 
 	isPermotation(orig_number, number, sizeof(orig_number)/sizeof(int));
-	isSorted(number,n);		
+	isSorted(number,n);
+	printf("END OF RUNNING\n");
 	
 	return 0;
 }
